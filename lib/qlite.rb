@@ -39,7 +39,13 @@ module Qlite
     # TODO
 
     # qubic_create	qc	creates a new qubic and stores it in the persistence. life cycle will not be automized: do the assembly transaction manually
-    # TODO
+    def qubic_create(data)
+      pp "RUN Qlite::qubic_create"
+      body = {command: 'qubic_create', "execution start": data[:execution_start], "runtime limit": data[:runtime_limit], "hash period duration": data[:hash_period_duration], "result period duration": data[:result_period_duration], code: data[:code]}
+      return send_request(body)
+    rescue => e
+      puts "failed #{e}"
+    end
 
     # qubic_delete	qd	removes a qubic from the persistence (qubic's private key will be deleted: cannot be undone)
     # TODO
@@ -60,7 +66,13 @@ module Qlite
     # TODO
 
     # oracle_create	oc	creates a new oracle and stores it in the persistence. life cycle will be automized, no need to do anything from here on
-    # TODO
+    def oracle_create(qubic_id)
+      pp "RUN Qlite::oracle_create"
+      body = {command: 'oracle create', 'qubic id': qubic_id}
+      return send_request(body)
+    rescue => e
+      puts "failed #{e}"
+    end
 
     # oracle_delete	od	removes an oracle from the persistence (oracle's private key will be deleted: cannot be undone)
     # TODO
