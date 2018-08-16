@@ -84,7 +84,13 @@ module Qlite
     # TODO
 
     # oracle_list	ol	prints the full list of all oracles stored in the persistence
-    # TODO
+    def oracle_list(oracle_id)
+      pp "RUN Qlite::oracle_list"
+      body = {command: 'oracle_list', 'oracle id': oracle_id}
+      return send_request(body)
+    rescue => e
+      puts "failed #{e}"
+    end
 
     # oracle_pause	op	temporarily stops an oracle from processing its qubic, can be undone with 'oracle_restart'
     # TODO
