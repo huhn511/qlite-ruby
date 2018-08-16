@@ -57,7 +57,13 @@ module Qlite
     # TODO
 
     # qubic_list_applications	qla	lists all incoming oracle applications for a specific qubic, basis for 'qubic_assembly_add'
-    # TODO
+    def qubic_list_applications(qubic_id)
+      pp "RUN Qlite::qubic_list_applications"
+      body = {command: 'qubic_list_applications', 'qubic handle': qubic_id}
+      return send_request(body)
+    rescue => e
+      puts "failed #{e}"
+    end
 
     # qubic_assembly_add	qaa	adds an oracle to the assembly as preparation for 'qubic_assemble'
     # TODO
