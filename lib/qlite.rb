@@ -36,7 +36,13 @@ module Qlite
     end
 
     # qubic_list	ql	prints the full list of all qubics stored in the persistence
-    # TODO
+    def qubic_list(qubic_id)
+      pp "RUN Qlite::qubic_list"
+      body = {command: 'qubic_list', 'qubic id': qubic_id}
+      return send_request(body)
+    rescue => e
+      puts "failed #{e}"
+    end
 
     # qubic_create	qc	creates a new qubic and stores it in the persistence. life cycle will not be automized: do the assembly transaction manually
     def qubic_create(data)
