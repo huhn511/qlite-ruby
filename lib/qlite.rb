@@ -66,7 +66,13 @@ module Qlite
     end
 
     # qubic_assembly_add	qaa	adds an oracle to the assembly as preparation for 'qubic_assemble'
-    # TODO
+    def qubic_assembly_add(qubic_id, oracle_id)
+      pp "RUN Qlite::qubic_assembly_add"
+      body = {command: 'qubic_assembly_add', 'qubic handle': qubic_id, "oracle id": oracle_id }
+      return send_request(body)
+    rescue => e
+      puts "failed #{e}"
+    end
 
     # qubic_assemble	qa	publishes the assembly transaction for a specific qubic
     # TODO
