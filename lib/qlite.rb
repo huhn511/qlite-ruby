@@ -54,7 +54,13 @@ module Qlite
     end
 
     # qubic_delete	qd	removes a qubic from the persistence (qubic's private key will be deleted: cannot be undone)
-    # TODO
+    def qubic_delete(qubic_id)
+      pp "RUN Qlite::qubic_delete"
+      body = {command: 'qubic_delete', "qubic handle": qubic_id}
+      return send_request(body)
+    rescue => e
+      puts "failed #{e}"
+    end
 
     # qubic_list_applications	qla	lists all incoming oracle applications for a specific qubic, basis for 'qubic_assembly_add'
     def qubic_list_applications(qubic_id)
