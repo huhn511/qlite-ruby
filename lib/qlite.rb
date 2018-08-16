@@ -68,7 +68,7 @@ module Qlite
     # oracle_create	oc	creates a new oracle and stores it in the persistence. life cycle will be automized, no need to do anything from here on
     def oracle_create(qubic_id)
       pp "RUN Qlite::oracle_create"
-      body = {command: 'oracle create', 'qubic id': qubic_id}
+      body = {command: 'oracle_create', 'qubic id': qubic_id}
       return send_request(body)
     rescue => e
       puts "failed #{e}"
