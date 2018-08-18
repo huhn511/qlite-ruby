@@ -171,7 +171,13 @@ module Qlite
     end
 
     # app_install	ai	installs an app from an external source
-    # TODO
+    def app_install(app_url)
+      pp "RUN Qlite::app_install"
+      body = {command: 'app_install', url: app_url}
+      return send_request(body)
+    rescue => e
+      puts "failed #{e}"
+    end
 
     # app_uninstall	au	uninstalls an app
     def app_uninstall(app)
