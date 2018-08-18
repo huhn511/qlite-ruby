@@ -117,7 +117,13 @@ module Qlite
     # TODO
 
     # iam_create	ic	creates a new IAM stream and stores it in the persistence
-    # TODO
+    def iam_create
+      pp "RUN Qlite::iam_create"
+      body = {command: 'iam_create'}
+      return send_request(body)
+    rescue => e
+      puts "failed #{e}"
+    end
 
     # iam_delete	id	removes an IAM stream from the persistence (stream's private key will be deleted: cannot be undone)
     # TODO
