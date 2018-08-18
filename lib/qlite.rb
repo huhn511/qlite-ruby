@@ -174,7 +174,13 @@ module Qlite
     # TODO
 
     # app_uninstall	au	uninstalls an app
-    # TODO
+    def app_uninstall(app)
+      pp "RUN Qlite::app_uninstall"
+      body = {command: 'app_uninstall', app: app[:id]}
+      return send_request(body)
+    rescue => e
+      puts "failed #{e}"
+    end
 
 
     private
