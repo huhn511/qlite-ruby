@@ -180,9 +180,9 @@ module Qlite
     end
 
     # app_uninstall	au	uninstalls an app
-    def app_uninstall(app)
+    def app_uninstall(app_id)
       pp "RUN Qlite::app_uninstall"
-      body = {command: 'app_uninstall', app: app[:id]}
+      body = {command: 'app_uninstall', app: app_id}
       return send_request(body)
     rescue => e
       puts "failed #{e}"
