@@ -126,7 +126,13 @@ module Qlite
     end
 
     # iam_delete	id	removes an IAM stream from the persistence (stream's private key will be deleted: cannot be undone)
-    # TODO
+    def iam_delete(iam_id)
+      pp "RUN Qlite::iam_delete"
+      body = {command: 'iam_delete', 'iam stream handle': iam_id}
+      return send_request(body)
+    rescue => e
+      puts "failed #{e}"
+    end
 
     # iam_list	il	prints the full list of all IAM streams stored in the persistence
     def iam_list
