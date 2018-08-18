@@ -162,7 +162,13 @@ module Qlite
     end
 
     # apps_list	al	prints the full list of all app installed
-    # TODO
+    def apps_list
+      pp "RUN Qlite::apps_list"
+      body = {command: 'apps_list'}
+      return send_request(body)
+    rescue => e
+      puts "failed #{e}"
+    end
 
     # app_install	ai	installs an app from an external source
     # TODO
